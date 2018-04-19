@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceStart : MonoBehaviour {
+public class MLSpaceStart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

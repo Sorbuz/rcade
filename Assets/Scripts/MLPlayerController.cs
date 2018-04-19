@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class MLPlayerController : MonoBehaviour {
 	float tilt = 20.0f;
 	float smooth = 5.0f;
 	// Use this for initialization
