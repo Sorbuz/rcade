@@ -68,6 +68,10 @@ public class PlayerShooting : MonoBehaviour {
 			if (enemyHealth != null) {
 				enemyHealth.TakeDamage (damagePerShot, shootHit.point;
 			}*/
+			AsteroidDestruct asteroidDestruct = shootHit.collider.GetComponent<AsteroidDestruct> ();
+			if (asteroidDestruct != null) {
+				asteroidDestruct.Destruct ();
+			}
 			gunLine.SetPosition (1, shootHit.point);
 		} else {
 			gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
