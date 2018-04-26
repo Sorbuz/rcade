@@ -4320,8 +4320,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0dd1ad92d1deae4db6dac74c1ae6598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazard: {fileID: 1579073054728078, guid: dc18c22ed62c56d4581fa0e1c02c6297, type: 2}
+  asteroid: {fileID: 1579073054728078, guid: dc18c22ed62c56d4581fa0e1c02c6297, type: 2}
+  loseText: {fileID: 1553114507236104, guid: fbb136e6dda566548b72899b64c97120, type: 2}
   spawnValues: {x: 10, y: 0, z: 70}
+  timeBetweenSpawns: 0.1
+  spawning: 1
 --- !u!4 &1742840750
 Transform:
   m_ObjectHideFlags: 0
