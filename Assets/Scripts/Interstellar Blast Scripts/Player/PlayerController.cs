@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IBPlayerController : MonoBehaviour {
-	float tilt = -20.0f;
+public class PlayerController : MonoBehaviour {
+	
 	public float speed = 6f;
 	public float turnSpeed = 10.0f;
+	float tilt = -20.0f;
+
 	Rigidbody rb;
 	// Use this for initialization
 	void Start () {
@@ -15,7 +17,7 @@ public class IBPlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float tiltZ = Input.GetAxis ("Horizontal") * tilt ;
-		float tiltX = Input.GetAxis ("Vertical") * tilt;
+		float tiltX = 0f;//Input.GetAxis ("Vertical") * tilt;
 
 		Quaternion target = Quaternion.Euler (tiltX, 0, tiltZ);
 
