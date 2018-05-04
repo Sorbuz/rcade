@@ -17,6 +17,7 @@ public class PlayerShooting : MonoBehaviour {
 	AudioSource gunAudio;
 	Light gunLight;
 	float effectsDisplayTime = 0.2f;
+	Vector3 mousePos;
 
 	void Awake () {
 		shootableMask = LayerMask.GetMask ("Shootable");
@@ -27,7 +28,7 @@ public class PlayerShooting : MonoBehaviour {
 	}
 
 	void Start () {
-		
+		mousePos = Input.mousePosition;
 	}
 
 	void Update () {
@@ -60,14 +61,12 @@ public class PlayerShooting : MonoBehaviour {
 		gunLine.enabled = true;
 		gunLine.SetPosition (0, new Vector3(0,0,0));
 
+		//mousePos += Camera.main.transform.forward * 10f;
+
 		shootRay.origin = transform.position;
-		shootRay.direction = transform.forward;
+		shootRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 
 		if (Physics.Raycast (shootRay, out shootHit, range, shootableMask)) {
-			/* EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth> ();
-			if (enemyHealth != null) {
-				enemyHealth.TakeDamage (damagePerShot, shootHit.point;
-			}*/
 			AsteroidDestruct asteroidDestruct = shootHit.collider.GetComponent<AsteroidDestruct> ();
 			if (asteroidDestruct != null) {
 				asteroidDestruct.Destruct ();

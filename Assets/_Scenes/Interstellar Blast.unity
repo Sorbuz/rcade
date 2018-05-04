@@ -335,8 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7208e1103eb1a4a4699715036ef8722a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenShots: 0.4
-  range: 200
+  timeBetweenShots: 0.7
+  range: 300
   player: {fileID: 1051944943}
 --- !u!82 &716028556
 AudioSource:
@@ -661,7 +661,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -725783282
+  randomSeed: -1806716153
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4324,7 +4324,7 @@ MonoBehaviour:
   loseText: {fileID: 1553114507236104, guid: fbb136e6dda566548b72899b64c97120, type: 2}
   spawnValues: {x: 10, y: 0, z: 70}
   timeBetweenSpawns: 0.1
-  spawning: 1
+  spawning: 0
 --- !u!4 &1742840750
 Transform:
   m_ObjectHideFlags: 0
