@@ -8,4 +8,8 @@ public class MinigamesMenu : MonoBehaviour {
 	public void LoadMarbleLabyrinth () {
 		SceneManager.LoadScene ("MarbleLabyrinth");
 	}
+
+	public void LoadIB () {
+		SceneManager.LoadScene ("Interstellar Blast");
+	}
 }

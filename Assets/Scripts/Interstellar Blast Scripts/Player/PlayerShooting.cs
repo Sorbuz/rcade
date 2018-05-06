@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerShooting : MonoBehaviour {
-	// public int damage = 20;
 	public float timeBetweenShots = 0.15f;
 	public float range = 100f;
 	public GameObject player;
+	public Text scoreText;
 
+	int score = 0;
 	float timer;
 	Ray shootRay;
 	RaycastHit shootHit;
@@ -17,7 +19,7 @@ public class PlayerShooting : MonoBehaviour {
 	AudioSource gunAudio;
 	Light gunLight;
 	float effectsDisplayTime = 0.2f;
-	Vector3 mousePos;
+
 
 	void Awake () {
 		shootableMask = LayerMask.GetMask ("Shootable");
@@ -27,9 +29,6 @@ public class PlayerShooting : MonoBehaviour {
 		gunLight = GetComponent<Light> ();
 	}
 
-	void Start () {
-		mousePos = Input.mousePosition;
-	}
 
 	void Update () {
 		timer += Time.deltaTime;
@@ -72,6 +71,8 @@ public class PlayerShooting : MonoBehaviour {
 				asteroidDestruct.Destruct ();
 			}
 			gunLine.SetPosition (1, shootHit.point);
+			score += 10;
+			scoreText.text = "Score " + score;
 		} else {
 			gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
 		}
