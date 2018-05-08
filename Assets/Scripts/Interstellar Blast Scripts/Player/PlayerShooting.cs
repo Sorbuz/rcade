@@ -8,8 +8,8 @@ public class PlayerShooting : MonoBehaviour {
 	public float range = 100f;
 	public GameObject player;
 	public Text scoreText;
+	public int score = 0;
 
-	int score = 0;
 	float timer;
 	Ray shootRay;
 	RaycastHit shootHit;
@@ -21,7 +21,8 @@ public class PlayerShooting : MonoBehaviour {
 	float effectsDisplayTime = 0.2f;
 
 
-	void Awake () {
+	void Awake () 
+	{
 		shootableMask = LayerMask.GetMask ("Shootable");
 		gunParticles = GetComponent<ParticleSystem> ();
 		gunLine = GetComponent<LineRenderer> ();
@@ -30,7 +31,8 @@ public class PlayerShooting : MonoBehaviour {
 	}
 
 
-	void Update () {
+	void Update () 
+	{
 		timer += Time.deltaTime;
 
 		if (Input.GetButton("Fire1") && timer >= timeBetweenShots) {
@@ -42,12 +44,14 @@ public class PlayerShooting : MonoBehaviour {
 		}
 	}
 
-	public void DisableEffects () {
+	public void DisableEffects () 
+	{
 		gunLine.enabled = false;
 		gunLight.enabled = false;
 	}
 
-	void Shoot () {
+	void Shoot () 
+	{
 		timer = 0f;
 
 		gunAudio.Play ();
@@ -60,8 +64,6 @@ public class PlayerShooting : MonoBehaviour {
 		gunLine.enabled = true;
 		gunLine.SetPosition (0, new Vector3(0,0,0));
 
-		//mousePos += Camera.main.transform.forward * 10f;
-
 		shootRay.origin = transform.position;
 		shootRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 
@@ -71,10 +73,18 @@ public class PlayerShooting : MonoBehaviour {
 				asteroidDestruct.Destruct ();
 			}
 			gunLine.SetPosition (1, shootHit.point);
-			score += 10;
-			scoreText.text = "Score " + score;
+			scoreText.text = "Score " + UpdateScore (10);
 		} else {
 			gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
 		}
+	}
+
+	public int UpdateScore(int scoreIncrement)
+	{
+		//if (scoreIncrement = null) {
+		//	score += 10;
+		//}
+		score += scoreIncrement;
+		return score;
 	}
 }

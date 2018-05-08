@@ -8,15 +8,20 @@ public class Marble : MonoBehaviour {
 	private float time;
 	private bool timerRunning;
 
+	public Highscore hs;
+	GameObject hsO;
 	Rigidbody rb;
-	// Use this for initialization
-	void Start () {
+
+	void Start () 
+	{
+		hsO = GameObject.Find ("HighScore");
+		hsO.SetActive (false);
 		rb = GetComponent<Rigidbody> ();
 		timerRunning = false;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void Update () 
+	{
 		// Press space to start
 		if (Input.GetKey (KeyCode.Space)) {
 			rb.useGravity = true;
@@ -32,10 +37,18 @@ public class Marble : MonoBehaviour {
 		timer.text = "Time: " + rounded.ToString () + " seconds";
 	}
 
-	void OnTriggerEnter(Collider other) {
+	void OnTriggerEnter(Collider other) 
+	{
 		// Won game
 		if (other.gameObject.CompareTag ("Finish")) {
-			this.gameObject.SetActive (false);
+			EndGame ();
 		}
+	}
+
+	void EndGame () 
+	{
+		hsO.SetActive (true);
+		timerRunning = false;
+		hs.SetTime (time);
 	}
 }
