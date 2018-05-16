@@ -9,7 +9,6 @@ public class HighscoreIB : MonoBehaviour {
 	public TextMeshProUGUI text2;
 	public TextMeshProUGUI text3;
 
-	GameObject menu;
 	int s1;
 	int s2;
 	int s3;
@@ -19,8 +18,6 @@ public class HighscoreIB : MonoBehaviour {
 		s1 = PlayerPrefs.GetInt ("IB1");
 		s2 = PlayerPrefs.GetInt ("IB2");
 		s3 = PlayerPrefs.GetInt ("IB3");
-
-		menu = GameObject.Find ("Menu");
 	}
 
 	void SetHighscore ()
