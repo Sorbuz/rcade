@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MinigamesMenu : MonoBehaviour {
+public class SceneController : MonoBehaviour {
 
 	public void LoadMarbleLabyrinth () {
 		SceneManager.LoadScene ("MarbleLabyrinth");
@@ -17,5 +17,10 @@ public class MinigamesMenu : MonoBehaviour {
 	public void RestartCurrentScene () 
 	{
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+	}
+
+	public void ExitToMainMenu ()
+	{
+		SceneManager.LoadScene ("Menu");
 	}
 }

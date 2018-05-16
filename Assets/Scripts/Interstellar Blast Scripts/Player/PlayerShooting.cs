@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerShooting : MonoBehaviour {
 	public float timeBetweenShots = 0.15f;
 	public float range = 100f;
 	public GameObject player;
-	public Text scoreText;
 	public int score = 0;
+	public TextMeshProUGUI scoreText;
 
 	float timer;
 	Ray shootRay;
@@ -81,9 +82,6 @@ public class PlayerShooting : MonoBehaviour {
 
 	public int UpdateScore(int scoreIncrement)
 	{
-		//if (scoreIncrement = null) {
-		//	score += 10;
-		//}
 		score += scoreIncrement;
 		return score;
 	}

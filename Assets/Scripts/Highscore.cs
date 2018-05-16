@@ -9,6 +9,7 @@ public class Highscore : MonoBehaviour {
 	public Text text2;
 	public Text text3;
 
+	GameObject highsc;
 	float time;
 	float tempTime;
 	float t1;
@@ -21,6 +22,8 @@ public class Highscore : MonoBehaviour {
 		t1 = PlayerPrefs.GetFloat ("MB1");
 		t2 = PlayerPrefs.GetFloat ("MB2");
 		t3 = PlayerPrefs.GetFloat ("MB3");
+
+		highsc = GameObject.Find ("Menu");
 	}
 
 	void SetHighscore () 
@@ -42,8 +45,6 @@ public class Highscore : MonoBehaviour {
 			}
 		}
 		SetText ();
-		foreach (float i in times)
-			Debug.Log (i);
 	}
 
 	public void SetTime(float t)
@@ -64,6 +65,19 @@ public class Highscore : MonoBehaviour {
 		PlayerPrefs.DeleteKey ("MB1");
 		PlayerPrefs.DeleteKey ("MB2");
 		PlayerPrefs.DeleteKey ("MB3");
+		SetText ();
+	}
+
+	public void ToggleMenu()
+	{
+		bool active;
+
+		if (highsc.activeSelf)
+			active = false;
+		else
+			active = true;
+
+		highsc.SetActive (active);
 		SetText ();
 	}
 }

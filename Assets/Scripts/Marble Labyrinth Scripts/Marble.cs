@@ -14,7 +14,7 @@ public class Marble : MonoBehaviour {
 
 	void Start () 
 	{
-		hsO = GameObject.Find ("HighScore");
+		hsO = GameObject.Find ("Menu");
 		hsO.SetActive (false);
 		rb = GetComponent<Rigidbody> ();
 		timerRunning = false;
@@ -42,6 +42,10 @@ public class Marble : MonoBehaviour {
 		// Won game
 		if (other.gameObject.CompareTag ("Finish")) {
 			EndGame ();
+		}
+
+		if (other.gameObject.CompareTag ("Crystal")) {
+			Destroy (gameObject);
 		}
 	}
 
