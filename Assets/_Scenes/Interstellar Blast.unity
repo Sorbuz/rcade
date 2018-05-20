@@ -1212,7 +1212,8 @@ AudioSource:
   m_GameObject: {fileID: 716028553}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: f924d484accf140458e62bba91e27145,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: f6cb1f581b7444b23a05b613a16420d5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.04
@@ -1526,7 +1527,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1613829754
+  randomSeed: 909004487
   InitialModule:
     serializedVersion: 3
     enabled: 1
