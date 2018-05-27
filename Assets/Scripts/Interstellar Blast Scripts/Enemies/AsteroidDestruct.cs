@@ -7,8 +7,14 @@ public class AsteroidDestruct : MonoBehaviour {
 	public GameObject asteroidExplosion;
 	public GameObject playerExplosion;
 
+	AudioSource explode;
 	GameObject player;
 	PlayerHealth ph;
+
+	void Awake ()
+	{
+		explode = this.GetComponent<AudioSource> ();
+	}
 
 	void Start()
 	{
@@ -21,6 +27,7 @@ public class AsteroidDestruct : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.tag == "Player") {
 			Destruct ();
+
 			ph.DecreaseHealth (33);
 			if (ph.GetHealth() < 10) {
 				Destroy (other.gameObject);
@@ -31,6 +38,8 @@ public class AsteroidDestruct : MonoBehaviour {
 		
 	// Laser hits asteroid
 	public void Destruct () {
+		Debug.Log (explode.clip);
+
 		Destroy (gameObject);
 		Instantiate (asteroidExplosion, transform.position, transform.rotation);
 	}

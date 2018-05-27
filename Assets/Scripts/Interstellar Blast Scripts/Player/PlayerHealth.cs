@@ -16,7 +16,6 @@ public class PlayerHealth : MonoBehaviour {
 	public void DecreaseHealth(int amount)
 	{
 		playerHealth = playerHealth - amount;
-		Debug.Log (playerHealth);
 		healthbar.value = playerHealth;
 	}
 

@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class Marble : MonoBehaviour {
 	public Text timer;
-	private float time;
-	private bool timerRunning;
-
+	public GameObject discharge;
 	public Highscore hs;
+
+	float time;
+	bool timerRunning;
+	AudioSource timerTick;
 	GameObject hsO;
 	Rigidbody rb;
+	bool isPlaying;
 
 	void Start () 
 	{
@@ -18,9 +21,10 @@ public class Marble : MonoBehaviour {
 		hsO.SetActive (false);
 		rb = GetComponent<Rigidbody> ();
 		timerRunning = false;
+		timerTick = GetComponent<AudioSource> ();
 	}
 
-	void Update () 
+	void Update ()
 	{
 		// Press space to start
 		if (Input.GetKey (KeyCode.Space)) {
@@ -30,7 +34,12 @@ public class Marble : MonoBehaviour {
 
 		if (timerRunning) {
 			time += Time.deltaTime;
-		}
+			if (!timerTick.isPlaying) {
+				timerTick.Play ();
+			}
+		} else
+			timerTick.Stop ();
+
 
 		decimal d1 = (decimal)time;
 		decimal rounded = decimal.Round (d1, 1);
@@ -45,6 +54,8 @@ public class Marble : MonoBehaviour {
 		}
 
 		if (other.gameObject.CompareTag ("Crystal")) {
+			GameObject dis = Instantiate (discharge, other.transform.position, other.transform.rotation);
+			dis.transform.parent = other.transform;
 			Destroy (gameObject);
 		}
 	}
