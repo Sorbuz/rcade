@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Marble : MonoBehaviour {
 	public Text timer;
 	public GameObject discharge;
+	public GameObject finishOrb;
 	public Highscore hs;
 
 	float time;
@@ -51,11 +52,16 @@ public class Marble : MonoBehaviour {
 		// Won game
 		if (other.gameObject.CompareTag ("Finish")) {
 			EndGame ();
+			GameObject fin = Instantiate (finishOrb, new Vector3(other.transform.position.x,
+				other.transform.position.y + 2, other.transform.position.z), other.transform.rotation);
+			fin.transform.parent = other.transform;
+			Destroy (gameObject);
 		}
 
 		if (other.gameObject.CompareTag ("Crystal")) {
 			GameObject dis = Instantiate (discharge, other.transform.position, other.transform.rotation);
 			dis.transform.parent = other.transform;
+			EndGame ();
 			Destroy (gameObject);
 		}
 	}

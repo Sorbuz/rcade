@@ -73,7 +73,7 @@ public class PlayerShooting : MonoBehaviour {
 			if (asteroidDestruct != null) {
 				asteroidDestruct.Destruct ();
 			}
-			gunLine.SetPosition (1, shootHit.point);
+			gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
 			scoreText.text = "Score " + UpdateScore (10);
 		} else {
 			gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
