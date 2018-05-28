@@ -59,9 +59,14 @@ public class Marble : MonoBehaviour {
 		}
 
 		if (other.gameObject.CompareTag ("Crystal")) {
-			GameObject dis = Instantiate (discharge, other.transform.position, other.transform.rotation);
+			GameObject dis = Instantiate (discharge, new Vector3(
+				other.transform.position.x,
+				other.transform.position.y + 2,
+				other.transform.position.z)
+				, other.transform.rotation);
+			
 			dis.transform.parent = other.transform;
-			EndGame ();
+			hs.ToggleMenu ();
 			Destroy (gameObject);
 		}
 	}
